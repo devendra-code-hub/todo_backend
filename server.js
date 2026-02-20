@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
+const { apiLimiter, authLimiter } = require("./middleware/rateLimiter");
+
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 
@@ -21,8 +23,11 @@ app.get("/", (req, res) => {
   res.send("Task Management API is running 🚀");
 });
 
+app.use(apiLimiter);
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/todos", todoRoutes);
 
 const PORT = process.env.PORT || 5000;
