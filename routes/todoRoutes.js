@@ -1,3 +1,51 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Todos
+ *   description: Todo management
+ */
+
+/**
+ * @swagger
+ * /api/todos:
+ *   get:
+ *     summary: Get all user todos
+ *     tags: [Todos]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of todos
+ */
+
+/**
+ * @swagger
+ * /api/todos:
+ *   post:
+ *     summary: Create new todo
+ *     tags: [Todos]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - text
+ *             properties:
+ *               text:
+ *                 type: string
+ *               priority:
+ *                 type: string
+ *               dueDate:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Todo created
+ */
+
 const express = require("express");
 const router = express.Router();
 const protect = require("../middleware/authMiddleware");
