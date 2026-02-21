@@ -1,118 +1,152 @@
-# 🧩 Task Management Backend API
+🧩 Task Management Backend API
 
-A production-style RESTful Task Management API built with Node.js, Express, and MongoDB.  
-This backend demonstrates JWT authentication, user-specific todos, validation, and centralized error handling.
+A production-style RESTful Task Management API built with Node.js, Express, and MongoDB.
 
----
+This project demonstrates real-world backend engineering concepts including JWT authentication, user-specific resources, API documentation, validation, pagination, rate limiting, and centralized error handling.
 
-## 🚀 Live API
+🚀 Live API
+
+Base URL:
 
 https://todo-backend-1-o395.onrender.com
 
----
+Swagger Documentation:
 
-## 🛠 Tech Stack
+https://todo-backend-1-o395.onrender.com/api-docs
+🛠 Tech Stack
 
-- Node.js  
-- Express.js  
-- MongoDB Atlas  
-- Mongoose  
-- JWT (JSON Web Tokens)  
-- bcryptjs  
-- express-validator  
-- Render (Deployment)
+Node.js
 
----
+Express.js
 
-## ✨ Features
+MongoDB Atlas
 
-- User Registration & Login  
-- JWT Authentication  
-- Protected Routes  
-- CRUD Todos  
-- User-Specific Data  
-- Password Hashing  
-- Input Validation  
-- Global Error Handling  
-- Priority & Due Date Support  
-- MVC Architecture  
-- Deployed Backend  
+Mongoose
 
----
+JWT Authentication
 
-## 📁 Project Structure
+bcryptjs
+
+express-validator
+
+Swagger (OpenAPI)
+
+express-rate-limit
+
+Render (Deployment)
+
+✨ Features
+Authentication & Security
+
+User Registration & Login
+
+JWT Authentication
+
+Protected Routes
+
+Password Hashing (bcrypt)
+
+API Rate Limiting
+
+Centralized Error Middleware
+
+Todo Management
+
+Create / Read / Update / Delete Todos
+
+User-specific data isolation
+
+Partial Updates (PATCH)
+
+Priority Levels (low / medium / high)
+
+Due Dates
+
+Advanced Backend Features
+
+Pagination
+
+Search by text
+
+Filter by priority
+
+Sorting
+
+Input Validation
+
+MVC Architecture
+
+Swagger API Documentation
+
+Production Deployment
+
+📁 Project Structure
 todo-backend/
 │
 ├── config/
-│ └── db.js
+│   ├── db.js
+│   └── swagger.js
 │
 ├── controllers/
-│ ├── authController.js
-│ └── todoController.js
+│   ├── authController.js
+│   └── todoController.js
 │
 ├── middleware/
-│ ├── authMiddleware.js
-│ ├── errorMiddleware.js
-│ └── validators.js
+│   ├── authMiddleware.js
+│   ├── errorMiddleware.js
+│   ├── rateLimiter.js
+│   └── validators.js
 │
 ├── models/
-│ ├── User.js
-│ └── Todo.js
+│   ├── User.js
+│   └── Todo.js
 │
 ├── routes/
-│ ├── authRoutes.js
-│ └── todoRoutes.js
+│   ├── authRoutes.js
+│   └── todoRoutes.js
 │
 ├── server.js
 └── README.md
+🔐 Authentication Flow
 
----
+User registers or logs in
 
-## 🔐 Authentication Flow
+Server returns JWT token
 
-1. User registers or logs in  
-2. Server returns JWT token  
-3. Client sends token in Authorization header  
-4. Backend verifies token  
-5. User accesses only their own todos  
+Client sends token in Authorization header
 
-Authorization Header:Authorization: Bearer YOUR_TOKEN
+Backend validates token
 
+User can access only their own todos
 
----
+Authorization Header Format
+Authorization: Bearer YOUR_JWT_TOKEN
+📌 API Endpoints
+Auth
 
-## 📌 API Endpoints
-
-### Auth
-
-Register:
+Register User
 POST /api/auth/register
 
-
-Body:
-```json
 {
   "name": "Vinay",
   "email": "vinay@test.com",
   "password": "123456"
 }
-```
-Login:
 
+Login User
 POST /api/auth/login
 
-Body:
 {
   "email": "vinay@test.com",
   "password": "123456"
 }
+Todos (Protected)
 
-Todos (Protected Routes)
+Get Todos (with pagination & search)
 
-Get Todos:
-GET /api/todos
+GET /api/todos?page=1&limit=10&search=task&priority=high
 
-Create Todo:
+Create Todo
 
 POST /api/todos
 {
@@ -121,11 +155,11 @@ POST /api/todos
   "dueDate": "2026-03-01"
 }
 
-Update Todo:
+Update Todo
 
-PUT /api/todos/:id
+PATCH /api/todos/:id
 
-Delete Todo:
+Delete Todo
 
 DELETE /api/todos/:id
 ⚙️ Environment Variables
@@ -133,7 +167,7 @@ DELETE /api/todos/:id
 Create .env locally:
 
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret
+JWT_SECRET=your_secret_key
 PORT=5000
 
 (Render users: add these in Environment Variables dashboard.)
@@ -141,37 +175,62 @@ PORT=5000
 ▶️ Run Locally
 npm install
 npm run dev
-
-
 🧪 Testing
 
-Use Postman or Thunder Client.
+Use:
+
+Swagger UI
+
+Postman
+
+Thunder Client
+
+Steps:
 
 Register user
 
-Login to receive token
+Login to receive JWT
 
-Send token in Authorization header
+Authorize using Bearer token
 
-Access todo routes
-
-
+Test protected routes
 
 📚 What I Learned
 
-REST API design
+REST API design principles
 
-JWT authentication
+JWT-based authentication
 
-MongoDB relations with ObjectId
+MongoDB relationships using ObjectId
 
 MVC architecture
 
-Input validation
+Input validation & error handling
 
-Global error handling
+API documentation using Swagger
 
-Secure password hashing
+Pagination, filtering & searching
 
-Backend deployment with Render
+Rate limiting for security
 
+Production deployment with Render
+
+Building scalable backend systems
+
+⭐ Future Improvements
+
+Refresh tokens
+
+Role-based access
+
+Frontend integration
+
+Testing with Jest
+
+Dockerization
+
+👨‍💻 Author
+
+Devendra Kumar Mahto
+
+Backend Developer | Node.js | MongoDB
